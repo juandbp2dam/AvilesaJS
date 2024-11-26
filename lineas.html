@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./Components.js"></script>
     <script type="module" src="./LogicaNegocio.js"></script>
     <script src="./Eventos.js"></script>
+
     <title>AvileSA: Líneas</title>
   </head>
   <body>
@@ -23,13 +25,14 @@
     <button id="btnAnyadir">Añadir línea</button>
     <button id="btnEliminar">Eliminar línea</button>
     <button id="btnModificar">Modificar línea</button>
+    <!-- <edit-linea id="editLinea"></edit-linea> -->
     <div id="editLinea" style="display: none">
       <br /><br />
       <label for="txtNumero">Número:</label>
       <input type="number" step="1" min="1" id="txtNumero" required />
       <br /><br />
       <label for="cbOrigen">Origen:</label>
-      <select id="cbOrigen">
+      <select id="cbOrigen" required>
         <option>Avilés</option>
         <option>Corvera</option>
         <option>Gijón</option>
@@ -38,7 +41,7 @@
       </select>
       <br /><br />
       <label for="cbDestino">Destino:</label>
-      <select id="cbDestino">
+      <select id="cbDestino" required>
         <option>Avilés</option>
         <option>Corvera</option>
         <option>Gijón</option>
@@ -47,9 +50,9 @@
       </select>
       <br /><br />
       <label for="txtHoraSalida">Hora de salida:</label>
-      <input type="time" id="txtHoraSalida" /> <br /><br />
+      <input type="time" id="txtHoraSalida" required /> <br /><br />
       <label for="txtIntervalo">Intervalo:</label>
-      <input type="time" id="txtIntervalo" /> <br /><br />
+      <input type="time" id="txtIntervalo" required /> <br /><br />
       <button id="btnAccionLinea">Guardar</button>
     </div>
     <script>
