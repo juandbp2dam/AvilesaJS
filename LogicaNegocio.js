@@ -101,13 +101,18 @@ const checkHora = (hora) => {
   // console.log(fechaHora)
   //return !isNaN(fechaHora);
   return true;
-}
-window.reinicializa = reinicializa;
-window.inicializa = inicializa;
-window.getLineas = getLineas;
-window.insertaLinea = insertaLinea;
-window.eliminaLineaPorNumero = eliminaLineaPorNumero;
-window.modificarLineaPorNumero = modificarLineaPorNumero;
-window.loadData = loadData;
-window.existeLinea = existeLinea;
-window.checkHora = checkHora;
+};
+
+const importMethods = () => {
+  window.reinicializa = reinicializa;
+  window.inicializa = inicializa;
+  window.getLineas = getLineas;
+  window.insertaLinea = insertaLinea;
+  window.eliminaLineaPorNumero = eliminaLineaPorNumero;
+  window.modificarLineaPorNumero = modificarLineaPorNumero;
+  window.loadData = loadData;
+  window.existeLinea = existeLinea;
+  window.checkHora = checkHora;
+};
+
+importMethods();
