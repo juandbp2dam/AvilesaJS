@@ -24,7 +24,6 @@
     <button id="btnAnyadir">Añadir línea</button>
     <button id="btnEliminar">Eliminar línea</button>
     <button id="btnModificar">Modificar línea</button>
-    <!-- <edit-linea id="editLinea"></edit-linea> -->
     <div id="editLinea" style="display: none">
       <br /><br />
       <label for="txtNumero">Número:</label>
@@ -60,21 +59,11 @@
         () => {
           loadData();
           loadControls();
+          loadEvents();
         },
         false
       );
-      btnAnyadir = document.getElementById("btnAnyadir");
-      if (btnAnyadir)
-        btnAnyadir.addEventListener("click", showAnyadirLineaEvt, false);
-      btnAccionLinea = document.getElementById("btnAccionLinea");
-      if (btnAccionLinea)
-        btnAccionLinea.addEventListener("click", accionLineaEvt, false);
-      btnEliminar = document.getElementById("btnEliminar");
-      if (btnEliminar)
-        btnEliminar.addEventListener("click", eliminarLineasEvt, false);
-      btnModificar = document.getElementById("btnModificar");
-      if (btnModificar)
-        btnModificar.addEventListener("click", showEditarLineaEvt, false);
+      
     </script>
   </body>
 </html>

@@ -7,7 +7,7 @@ function actualizaLocal() {
 }
 
 function inicializa() {
-  lineas = []; //JSON.parse(localStorage.getItem("lineas")) || [];
+  lineas = []; 
   lineas.push(new Linea(1, "Avilés", "Piedras Blancas", "08:00", "00:15"));
   lineas.push(new Linea(2, "Avilés", "Gijón-La Laboral", "09:00", "01:00"));
   actualizaLocal();
@@ -44,7 +44,7 @@ function modificarLineaPorNumero(
   if (!lineas) lineas = getLineas();
 
   let encontrada = lineas.find((l) => l.Numero === numero);
-  console.log(encontrada);
+  
   if (encontrada) {
     encontrada.Origen = nuevoOrigen;
     encontrada.Destino = nuevoDestino;
@@ -61,7 +61,7 @@ function comparerLineas(l1, l2) {
 
 const existeLinea = (numero) => {
   if (!lineas) lineas = getLineas(); 
-  return lineas.some(n => n.Numero == numero);
+  return lineas.some(n => n.Numero === numero);
 }
 
 const loadData = function () {
@@ -94,14 +94,7 @@ const loadData = function () {
   });
 };
 
-const checkHora = (hora) => {
-  // let fechaReferencia = "1970-01-01T";
-  
-  // let fechaHora = new Date(fechaReferencia+hora);
-  // console.log(fechaHora)
-  //return !isNaN(fechaHora);
-  return true;
-};
+const getLineaPorNumero = () => getLineas().find((l) => l.Numero === numero);
 
 const importMethods = () => {
   window.reinicializa = reinicializa;
