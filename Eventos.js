@@ -89,7 +89,7 @@ const accionLineaEvt = () => {
       console.log("Hola, " + txtHoraSalida.value);
       limpiaFormLinea();
       enableActions(true);
-      loadData();
+      loadDataLineas();
     } 
     else {
       if (existeLinea(numero)) alert("El número de línea ya existe");
@@ -103,7 +103,7 @@ const accionLineaEvt = () => {
         );
       limpiaFormLinea();
       enableActions(true);
-      loadData();
+      loadDataLineas();
     }
   }
 };
@@ -122,13 +122,13 @@ const eliminarLineasEvt = () => {
   numeroLinea = parseInt(numeroLinea);
   if (numeroLinea && isNaN(numeroLinea)) alert("El número de línea introducido no es válido");
   else eliminaLineaPorNumero(numeroLinea);
-  loadData();
+  loadDataLineas();
 };
 
 const modificarLineasEvt = () => {
   lineas = getLineas();
   console.log(lineas);
-  loadData();
+  loadDataLineas();
 };
 
 const loadEvents = () =>

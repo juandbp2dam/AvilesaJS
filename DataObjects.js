@@ -15,10 +15,10 @@ export class Linea {
  */
 export class Parada {
   constructor(numero, numeroLinea, localidad, intervalo) {
-    this.Numero = numero;
-    this.NumeroLinea = numeroLinea;
-    this.Localidad = localidad;
-    this.Intervalo = intervalo;
+    this.numero = numero;
+    this.numeroLinea = numeroLinea;
+    this.localidad = localidad;
+    this.intervalo = intervalo;
   }
 
   get Numero() {

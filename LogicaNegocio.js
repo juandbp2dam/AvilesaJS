@@ -1,15 +1,26 @@
 import { Linea } from "./DataObjects.js";
-//
-var lineas;
+import { Parada } from "./DataObjects.js";
+
+
+//#region Métodos comunes
 
 function actualizaLocal() {
   localStorage.setItem("lineas", JSON.stringify(lineas));
+  localStorage.setItem("paradas", JSON.stringify(paradas));
 }
+
 
 function inicializa() {
   lineas = []; 
   lineas.push(new Linea(1, "Avilés", "Piedras Blancas", "08:00", "00:15"));
-  lineas.push(new Linea(2, "Avilés", "Gijón-La Laboral", "09:00", "01:00"));
+  lineas.push(new Linea(2, "Avilés", "Gijón", "09:00", "01:00"));
+  paradas = [];
+  paradas.push(new Parada(1, 1, "Raíces", "00:15"));
+  paradas.push(new Parada(2, 1, "Piedras Blancas", "00:30"));
+  paradas.push(new Parada(3, 2, "Trasona", "00:10"));
+  paradas.push(new Parada(4, 2, "Tabaza", "00:20"));
+  paradas.push(new Parada(5, 2, "Prendes", "00:30"));
+  paradas.push(new Parada(6, 2, "Gijón", "00:50"));
   actualizaLocal();
 }
 
@@ -17,6 +28,21 @@ function reinicializa() {
   localStorage.removeItem("lineas");
   inicializa();
 }
+
+
+
+//#endregion
+
+//#region Líneas
+
+/**
+ * Conjunto de líneas de la aplicación
+ */
+var lineas;
+var paradas;
+
+
+
 function getLineas() {
   return JSON.parse(localStorage.getItem("lineas"));
 }
@@ -61,10 +87,21 @@ function comparerLineas(l1, l2) {
 
 const existeLinea = (numero) => {
   if (!lineas) lineas = getLineas(); 
-  return lineas.some(n => n.Numero === numero);
+  return getLineaPorNumero(numero) != null;
 }
 
-const loadData = function () {
+const loadLocalidades = (combo) => {
+  combo.innerHTML = "";
+  let localidades = ['Avilés', 'Corvera', 'Luanco', 'Gijón', 'Oviedo', 'Piedras Blancas', 'Raíces', 'Trasona'];
+  let localidad;
+  localidades.forEach( (l) => {
+    localidad = document.createElement("option");
+    localidad.innerHTML = l;
+    combo.appendChild(localidad);
+  })
+}
+const loadDataLineas = function () {
+  
   let lineas = getLineas();
   let tblBody = document.getElementById("tblLineas").querySelector("tbody");
 
@@ -94,7 +131,10 @@ const loadData = function () {
   });
 };
 
-const getLineaPorNumero = () => getLineas().find((l) => l.Numero === numero);
+const getLineaPorNumero = (numero) => getLineas().find((l) => l.Numero === numero);
+
+
+//#endregion
 
 const importMethods = () => {
   window.reinicializa = reinicializa;
@@ -103,9 +143,9 @@ const importMethods = () => {
   window.insertaLinea = insertaLinea;
   window.eliminaLineaPorNumero = eliminaLineaPorNumero;
   window.modificarLineaPorNumero = modificarLineaPorNumero;
-  window.loadData = loadData;
+  window.loadDataLineas = loadDataLineas;
+  window.loadLocalidades = loadLocalidades;
   window.existeLinea = existeLinea;
-  window.checkHora = checkHora;
 };
-
 importMethods();
+
